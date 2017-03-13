@@ -1,0 +1,18 @@
+#deb http://mirrors.mit.edu/ubuntu/ trusty main universe multiverse
+#deb http://mirrors.mit.edu/ubuntu/ trusty-updates main universe multiverse
+#deb http://security.ubuntu.com/ubuntu trusty-security main universe multiverse
+
+deb http://cn.archive.ubuntu.com/ubuntu/ xenial main restricted
+deb http://cn.archive.ubuntu.com/ubuntu/ xenial-updates main restricted
+
+deb http://cn.archive.ubuntu.com/ubuntu/ xenial universe
+deb http://cn.archive.ubuntu.com/ubuntu/ xenial-updates universe
+ 
+deb http://cn.archive.ubuntu.com/ubuntu/ xenial multiverse
+deb http://cn.archive.ubuntu.com/ubuntu/ xenial-updates multiverse
+
+deb http://cn.archive.ubuntu.com/ubuntu/ xenial-backports main restricted universe multiverse
+
+deb http://security.ubuntu.com/ubuntu xenial-security main restricted
+deb http://security.ubuntu.com/ubuntu xenial-security main universe
+deb http://security.ubuntu.com/ubuntu xenial-security main multiverse
