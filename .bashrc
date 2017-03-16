@@ -2,6 +2,20 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+#auto launch tmux
+tmux_init()
+{
+	tmux new-session -s "kumu" -d -n "local"
+	#tmux new-window -n "other"
+	#tmux split-window -h
+	#tmux split-window -v "top"
+	#tmux -2 attach-session -d
+}
+
+if which tmux 2>&1 >/dev/null; then
+	test -z "$TMUX" && (tmux attach || tmux_init)
+fi
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
