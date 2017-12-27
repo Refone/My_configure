@@ -2,18 +2,13 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-#auto launch tmux
-tmux_init()
-{
-	tmux new-session -s "kumu" -d -n "local"
-	#tmux new-window -n "other"
-	#tmux split-window -h
-	#tmux split-window -v "top"
-	#tmux -2 attach-session -d
-}
-
-if which tmux 2>&1 >/dev/null; then
-	test -z "$TMUX" && (tmux attach || tmux_init)
+if [[ -z "$TMUX" ]] ;then
+    ID="`tmux ls | grep -vm1 attached | cut -d: -f1`" # get the id of a deattached session
+    if [[ -z "$ID" ]] ;then # if not available create a new one
+        tmux new-session
+    else
+        tmux attach-session -t "$ID" # if available attach to it
+    fi
 fi
 
 # If not running interactively, don't do anything
@@ -130,7 +125,3 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PATH="/home/own/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-export PYTHON_CONFIGURE_OPTS="--enable-shared"
