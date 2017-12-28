@@ -4,32 +4,17 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-"call vundle#begin()
+call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-"Plugin 'VundleVim/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-"Plugin 'ascenator/L9', {'name': 'newL9'}
-" Plugin YouCompleteMe
-"Bundle 'Valloric/YouCompleteMe'
+Plugin 'Tagbar'
 
 " All of your Plugins must be added before the following line
-"call vundle#end()            " required
+call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -65,7 +50,16 @@ set softtabstop=4	" number of spaces in tab when editing
 set cursorline		" highlight current line
 
 set incsearch		" search as characters are entered
-"set hlsearch		" highlight matches
+set hlsearch		" highlight matches
+
+set backspace=2
+
+" TagBar
+" 设置tagbar的窗口宽度
+let g:tagbar_width=30
+" 映射Tagbar的快捷键,按F8自动打开
+map <F8> :TagbarToggle<CR>
+"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "	shortcut key mappnig
@@ -99,3 +93,10 @@ set incsearch		" search as characters are entered
 "map!	<C-Up>		<C-u>
 "map!	<C-Left>	<Home>
 "map!	<C-Right>	<End>
+"
+if &term =~ '256color'  
+  " disable Background Color Erase (BCE) so that color schemes  
+  " render properly when inside 256-color tmux and GNU screen.  
+  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html  
+  set t_ut=  
+endif 
