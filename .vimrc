@@ -12,6 +12,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'Tagbar'
+Plugin 'itchyny/lightline.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -59,7 +60,28 @@ set backspace=2
 let g:tagbar_width=30
 " 映射Tagbar的快捷键,按F8自动打开
 map <F8> :TagbarToggle<CR>
-"
+"""
+
+" Lighrline
+set laststatus=2
+let g:lightline = {
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \ },
+      \ }
+
+function! LightlineFilename()
+  return &filetype ==# 'vimfiler' ? vimfiler#get_status_string() :
+        \ &filetype ==# 'unite' ? unite#get_status_string() :
+        \ &filetype ==# 'vimshell' ? vimshell#get_status_string() :
+        \ expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+endfunction
+
+let g:unite_force_overwrite_statusline = 0
+let g:vimfiler_force_overwrite_statusline = 0
+let g:vimshell_force_overwrite_statusline = 0
+"""
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "	shortcut key mappnig
