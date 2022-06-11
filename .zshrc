@@ -55,7 +55,7 @@ plugins=(git z d zsh-autosuggestions)
 
 # User configuration
 
-  export PATH="/usr/local/bin:/usr/local/sbin:/bin/:/usr/bin:/sbin:/usr/sbin"
+export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/bin/:/usr/bin:/sbin:/usr/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 export TERM=xterm-256color
 
